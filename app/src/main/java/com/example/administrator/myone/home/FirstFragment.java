@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,10 +29,9 @@ import java.util.List;
 public class FirstFragment extends Fragment {
     View view;
     ImageView imageView;
-    TextView author;
-    TextView content;
-    TextView title;
-    String s;
+    TextView textView;
+    TextView textView2;
+    TextView textView3;
     String path="http://v3.wufazhuce.com:8000/api/hp/detail/";
     Handler handler=new Handler(){
         @Override
@@ -38,7 +39,19 @@ public class FirstFragment extends Fragment {
             super.handleMessage(msg);
             if (msg!=null&&msg.what==0){
                String url= (String) msg.obj;
-                Picasso.with(getActivity()).load(url).into(imageView);
+                Picasso.with(getActivity()).load(url).resize(670,500).centerCrop().into(imageView);
+            }
+            if (msg!=null&&msg.what==1){
+                String title= (String) msg.obj;
+                textView3.setText(title);
+            }
+            if (msg!=null&&msg.what==2){
+                String author= (String) msg.obj;
+                textView.setText(author);
+            }
+            if (msg!=null&&msg.what==3){
+                String content= (String) msg.obj;
+                textView2.setText(content);
             }
         }
     };
@@ -60,12 +73,13 @@ public class FirstFragment extends Fragment {
                 Gson gson=new Gson();
                 Info info=gson.fromJson(json, Info.class);
                 List<String> list =info.getData();
-                for (int i=0;i<list.size();i++){
+                /*for (int i=0;i<list.size();i++){
                     String s =path+list.get(0);
                     Log.e("===","ss"+s);
-                }
+                }*/
+                String s =path+list.get(0);
                String str= HttpUtils.getData(s);
-               InfoMes infoMes= gson.fromJson(s, InfoMes.class);
+               InfoMes infoMes= gson.fromJson(str, InfoMes.class);
                 String url = infoMes.getData().getHp_img_url();
                 Log.e("===","ss"+url);
                 String title = infoMes.getData().getHp_title();
@@ -90,9 +104,9 @@ public class FirstFragment extends Fragment {
     //初始化控件
     public void init(){
         imageView= (ImageView) view.findViewById(R.id.imageView);
-        author = (TextView) view.findViewById(R.id.hp_author);
-        content = (TextView) view.findViewById(R.id.hp_content);
-        title = (TextView) view.findViewById(R.id.hp_title);
+        textView = (TextView) view.findViewById(R.id.hp_author);
+        textView2 = (TextView) view.findViewById(R.id.hp_content);
+        textView3 = (TextView) view.findViewById(R.id.hp_title);
     }
 
 }

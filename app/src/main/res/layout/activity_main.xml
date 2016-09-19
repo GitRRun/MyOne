@@ -4,15 +4,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.administrator.myone.MainActivity">
+<RelativeLayout
+    android:id="@+id/layout"
+    android:background="#555555"
+    android:layout_alignParentTop="true"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
 
+<ImageView
+    android:id="@+id/search"
+    android:clickable="true"
+    android:layout_centerVertical="true"
+    android:scaleType="centerCrop"
+    android:src="@mipmap/search"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="ONE"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/people"
+        android:clickable="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerCrop"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/individual_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
+    <View
+        android:layout_below="@+id/layout"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/vp"
+        android:layout_below="@id/layout"
         android:layout_above="@+id/rg">
 
     </android.support.v4.view.ViewPager>
-
+<View
+    android:layout_above="@+id/rg"
+    android:background="#000000"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"/>
     <RadioGroup
         android:id="@+id/rg"
         android:layout_alignParentBottom="true"
