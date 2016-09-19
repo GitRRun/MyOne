@@ -4,9 +4,17 @@
     android:layout_height="match_parent"
     android:background="#555555"
     tools:context="com.example.administrator.myone.home.SecondFragment">
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:background="@drawable/shandow"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
+        android:layout_marginTop="10dp"
         android:layout_alignParentTop="true"
         android:src="@mipmap/ic_launcher"
         android:layout_width="match_parent"
@@ -15,6 +23,7 @@
         />
 
     <TextView
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:textColor="#ffffff"
         android:layout_width="wrap_content"
@@ -26,6 +35,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:textColor="#ffffff"
         android:layout_width="wrap_content"
@@ -37,6 +47,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
+        android:layout_marginLeft="10dp"
         android:textSize="16sp"
         android:layout_marginTop="20dp"
         android:textColor="#ffffff"
@@ -47,6 +58,75 @@
         android:layout_below="@+id/hp_title"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+        <TextView
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/time"
+            android:layout_below="@+id/hp_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:src="@mipmap/diary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:textColor="#FFFFFF"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小  记"
+            android:id="@+id/note"
+            android:layout_toRightOf="@+id/imageView2"
+            android:layout_toEndOf="@+id/imageView2" />
+
+        <ImageView
+            android:id="@+id/laud"
+            android:layout_marginRight="35dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/select_laue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/note"
+            android:layout_toLeftOf="@+id/share"
+            android:layout_toStartOf="@+id/share"
+            android:layout_marginEnd="43dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="25317"
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/share"
+            android:layout_toStartOf="@+id/share" />
+
+        <ImageView
+            android:id="@+id/share"
+            android:src="@mipmap/share_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
 
 </RelativeLayout>

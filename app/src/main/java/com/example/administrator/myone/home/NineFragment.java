@@ -1,6 +1,7 @@
 package com.example.administrator.myone.home;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.myone.LoginActivity;
 import com.example.administrator.myone.R;
 import com.example.administrator.myone.http.HttpUtils;
 import com.example.administrator.myone.parse.Info;
@@ -27,9 +29,13 @@ import java.util.List;
 public class NineFragment extends Fragment {
     View view;
     ImageView imageView;
+    ImageView imageView2;
+    ImageView imageView3;
     TextView textView;
     TextView textView2;
     TextView textView3;
+    TextView textView4;
+
     String path="http://v3.wufazhuce.com:8000/api/hp/detail/";
     Handler handler=new Handler(){
         @Override
@@ -51,6 +57,10 @@ public class NineFragment extends Fragment {
                 String content= (String) msg.obj;
                 textView2.setText(content);
             }
+            if (msg!=null&&msg.what==4){
+                String time= (String) msg.obj;
+                textView4.setText(time);
+            }
         }
     };
 
@@ -63,8 +73,21 @@ public class NineFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_seven, container, false);
-
         init();
+        //图片点击事件
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -87,10 +110,13 @@ public class NineFragment extends Fragment {
                 Log.e("===","ss"+author);
                 String content = infoMes.getData().getHp_content();
                 Log.e("===","ss"+content);
+                String time = infoMes.getData().getHp_makettime();
+                Log.e("===","ss"+time);
                 handler.obtainMessage(0,url).sendToTarget();
                 handler.obtainMessage(1,title).sendToTarget();
                 handler.obtainMessage(2,author).sendToTarget();
                 handler.obtainMessage(3,content).sendToTarget();
+                handler.obtainMessage(4,time).sendToTarget();
 
 
             }
@@ -103,9 +129,13 @@ public class NineFragment extends Fragment {
     //初始化控件
     public void init(){
         imageView= (ImageView) view.findViewById(R.id.imageView);
+        imageView2= (ImageView) view.findViewById(R.id.imageView2);
+        imageView3= (ImageView) view.findViewById(R.id.share);
         textView = (TextView) view.findViewById(R.id.hp_author);
         textView2 = (TextView) view.findViewById(R.id.hp_content);
         textView3 = (TextView) view.findViewById(R.id.hp_title);
+        textView4 = (TextView) view.findViewById(R.id.time);
+
     }
 
 

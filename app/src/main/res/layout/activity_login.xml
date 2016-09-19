@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7E89B5"
+    tools:context="com.example.administrator.myone.LoginActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/backhome"
+            android:background="@mipmap/return_image_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_centerInParent="true"
+            android:text="登陆ONE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="微信"
+        android:id="@+id/button"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="微博"
+        android:id="@+id/button2"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="QQ"
+        android:id="@+id/button3"
+        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2" />
+</RelativeLayout>
